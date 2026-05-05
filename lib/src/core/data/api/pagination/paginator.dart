@@ -4,7 +4,7 @@ import 'package:crypto_app/src/core/data/api/pagination/pagination_params.dart';
 class Paginator<T, Params, Response> {
 
   final int initialStart;
-  final int initialLimit;
+  final int _limit;
 
   final Future<Response> Function(PaginationParams<Params> params) call;
 
@@ -29,11 +29,11 @@ class Paginator<T, Params, Response> {
 
   Paginator({
     this.initialStart = 1,
-    this.initialLimit = 100,
+    int limit = 100,
     required this.call,
     required this.getItems,
     required this.copyWithItems,
-  }): _start = initialStart, _limit = initialLimit;
+  }): _start = initialStart, _limit = limit;
 
   /// Безопасность от race-conditions
   /// защищает от двойного loadMore()
@@ -41,14 +41,12 @@ class Paginator<T, Params, Response> {
   int _requestId = 0;
 
   int _start;
-  int _limit;
   bool _isEnd = false;
   List<T> _list = [];
   Response? _response;
 
   void _init() {
     _start = initialStart;
-    _limit = initialLimit;
     _isEnd = false;
     _list = [];
   }
@@ -65,8 +63,7 @@ class Paginator<T, Params, Response> {
     _response = resp;
     final list = getItems(resp);
     _list = list;
-    _start += initialLimit;
-    _limit += initialLimit;
+    _start += _limit;
     _isEnd = list.isEmpty;
 
     return copyWithItems(
@@ -99,8 +96,7 @@ class Paginator<T, Params, Response> {
 
     _list = [..._list, ...list];
     _response = resp;
-    _start += initialLimit;
-    _limit += initialLimit;
+    _start += _limit;
     _isEnd = list.isEmpty;
 
     return copyWithItems(
