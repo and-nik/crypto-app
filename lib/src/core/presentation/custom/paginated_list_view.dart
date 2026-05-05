@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PaginatedListView extends StatefulWidget {
@@ -73,7 +74,7 @@ class _PaginatedListViewState extends State<PaginatedListView> {
         if (index == widget.itemCount && widget.isPaginating) {
           return const Padding(
             padding: EdgeInsets.all(16),
-            child: Center(child: CircularProgressIndicator()),
+            child: Center(child: CupertinoActivityIndicator()),
           );
         }
         return widget.itemBuilder(context, index);

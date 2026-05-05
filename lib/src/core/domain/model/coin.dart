@@ -1,4 +1,19 @@
+import 'package:crypto_app/src/core/data/api/const/api_const.dart';
 import 'package:crypto_app/src/core/domain/model/quote.dart';
+
+enum CoinImageSize {
+  x16(16),
+  x32(32),
+  x64(64),
+  x128(128),
+  x200(200);
+
+  final int size;
+
+  String get squareSize => "${size}x$size";
+
+  const CoinImageSize(this.size);
+}
 
 class Coin {
   final int id;
@@ -16,6 +31,9 @@ class Coin {
   /// Base: BTC (что мы покупаем/продаем)
   /// Quote: USD (в чем измеряется цена)
   final List<Quote> quotes;
+
+  String iconUrl([CoinImageSize size = .x64]) =>
+      ApiConst.iconUrl(size.squareSize, id);
 
   Coin({
     required this.id,

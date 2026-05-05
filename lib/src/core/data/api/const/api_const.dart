@@ -18,6 +18,8 @@ abstract class ApiConst {
   static const String queryLimit = "limit";
   static const String queryConvert = "convert";
 
+  static String iconUrl(String squareSize, int id) => "https://s2.coinmarketcap.com/static/img/coins/$squareSize/$id.png";
+
   static const String endpointCoins = "/v3/cryptocurrency/listings/latest";
 
 }

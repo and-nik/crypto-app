@@ -1,6 +1,16 @@
 import 'package:crypto_app/src/core/data/api/pagination/pagination_params.dart';
 
 /// [Params] is equal to [OtherFunctionParams]
+/// Usage Example
+// final paginator = PaginationIterator<CoinDto, CoinsParams, CoinsResponse>(
+//   call: (paginationParams) {
+//     return coinsDataSource.getCoins(paginationParams);
+//   },
+//   getItems: (response) => response.data,
+//   copyWithItems: ({required response, required items}) {
+//     return response.copyWith(data: items);
+//   },
+// );
 class Paginator<T, Params, Response> {
 
   final int initialStart;
@@ -8,18 +18,7 @@ class Paginator<T, Params, Response> {
 
   final Future<Response> Function(PaginationParams<Params> params) call;
 
-  /// Root items to get from. For example:
-  /**
-      final paginator = PaginationIterator<CoinDto, CoinsParams, CoinsResponse>(
-      call: (paginationParams) {
-      return coinsDataSource.getCoins(paginationParams);
-      },
-      getItems: (response) => response.data,
-      copyWithItems: ({required response, required items}) {
-      return response.copyWith(data: items);
-      },
-      );
-   */
+  /// Root items to get from
   final List<T> Function(Response response) getItems;
 
   final Response Function({

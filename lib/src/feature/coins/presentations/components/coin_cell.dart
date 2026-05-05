@@ -12,6 +12,15 @@ class CoinCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(coin.name);
+    return Row(
+      children: [
+        SizedBox(
+          height: 40,
+          width: 40,
+          child: Image.network(coin.iconUrl()),
+        ),
+        Text(coin.name),
+      ],
+    );
   }
 }
