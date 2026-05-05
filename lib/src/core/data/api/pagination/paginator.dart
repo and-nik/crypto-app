@@ -11,6 +11,7 @@ import 'package:crypto_app/src/core/data/api/pagination/pagination_params.dart';
 //     return response.copyWith(data: items);
 //   },
 // );
+//todo сделать чтобы двигался не _start а _limit поточу что при каждой пагинации надо обновлять весь список монет, а не пагинированную часть
 class Paginator<T, Params, Response> {
 
   final int initialStart;
