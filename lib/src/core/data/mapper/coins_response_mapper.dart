@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:crypto_app/src/core/data/api/model/resp/coins_response.dart';
 import 'package:crypto_app/src/core/domain/model/coin.dart';
 import 'package:crypto_app/src/core/domain/model/currency_ticker.dart';
@@ -45,7 +43,7 @@ class _CoinMapper {
       circulatingSupply: dto.circulatingSupply,
       maxSupply: dto.maxSupply,
       lastUpdated: DateTime.parse(dto.lastUpdated).toUtc(),
-      quotes: dto.quote.map(_QuoteMapper.toModel).expand<Quote>((element) => element,).toList(),
+      quotes: dto.quote.map(_QuoteMapper.toModel).toList(),
     );
   }
 }
@@ -53,18 +51,29 @@ class _CoinMapper {
 class _QuoteMapper {
   const _QuoteMapper._();
 
-  static List<Quote> toModel(Map<String, QuoteDto> map) {
-    return map.entries.map((e) {
-      final key = e.key;
-      final value = e.value;
-      return Quote(
-        ticker: CurrencyTicker.values.byName(key.toLowerCase()),
-        price: value.price,
-        volume24h: value.volume24h,
-        percentChange24h: value.percentChange24h,
-        marketCap: value.marketCap,
-        lastUpdated: DateTime.parse(value.lastUpdated).toUtc(),
-      );
-    },).toList();
+  // static List<Quote> toModel(Map<String, QuoteDto> map) {
+  //   return map.entries.map((e) {
+  //     final key = e.key;
+  //     final value = e.value;
+  //     return Quote(
+  //       ticker: CurrencyTicker.values.byName(key.toLowerCase()),
+  //       price: value.price,
+  //       volume24h: value.volume24h,
+  //       percentChange24h: value.percentChange24h,
+  //       marketCap: value.marketCap,
+  //       lastUpdated: DateTime.parse(value.lastUpdated).toUtc(),
+  //     );
+  //   },).toList();
+  // }
+
+  static Quote toModel(QuoteDto map) {
+    return Quote(
+      ticker: CurrencyTicker.values.byName(map.symbol.toLowerCase()),
+      price: map.price,
+      volume24h: map.volume24h,
+      percentChange24h: map.percentChange24h,
+      marketCap: map.marketCap,
+      lastUpdated: DateTime.parse(map.lastUpdated).toUtc(),
+    );
   }
 }

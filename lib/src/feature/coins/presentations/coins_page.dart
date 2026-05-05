@@ -22,6 +22,9 @@ class CoinsPage extends StatelessWidget {
           final cubit = context.read<CoinsCubit>();
 
           return Scaffold(
+            appBar: AppBar(
+              title: Text(state.coins.length.toString()),
+            ),
             body: state.isLoading ? const Center(
               child: CupertinoActivityIndicator(),
             ) : state.error != null ? LocalizedErrorWidget(

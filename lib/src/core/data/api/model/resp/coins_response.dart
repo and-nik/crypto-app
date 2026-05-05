@@ -62,12 +62,7 @@ class CoinDto {
   @JsonKey(name: 'last_updated')
   final String lastUpdated;
 
-  /// Например:
-  /// {
-  ///   "USD": QuoteDto(...),
-  ///   "EUR": QuoteDto(...),
-  /// }
-  final List<Map<String, QuoteDto>> quote;
+  final List<QuoteDto> quote;
 
   const CoinDto({
     required this.id,
@@ -81,8 +76,6 @@ class CoinDto {
     required this.quote,
   });
 
-  // QuoteDto? quoteFor(String currency) => quote[currency.toUpperCase()];
-
   factory CoinDto.fromJson(Map<String, dynamic> json) =>
       _$CoinDtoFromJson(json);
 
@@ -91,6 +84,8 @@ class CoinDto {
 
 @JsonSerializable()
 class QuoteDto {
+  final String symbol;
+
   final double price;
 
   @JsonKey(name: 'volume_24h')
@@ -106,6 +101,7 @@ class QuoteDto {
   final String lastUpdated;
 
   const QuoteDto({
+    required this.symbol,
     required this.price,
     required this.volume24h,
     required this.percentChange24h,
