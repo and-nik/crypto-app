@@ -8,4 +8,5 @@ class _AppIcons {
   final coinsCrypto = "$_path/coins-crypto.svg";
   final wallet = "$_path/wallet.svg";
   final portfolio = "$_path/portfolio.svg";
+  final plus = "$_path/plus.svg";
 }

@@ -85,6 +85,7 @@ class AppTheme {
         centerTitle: true,
         scrolledUnderElevation: 0,
         backgroundColor: Colors.transparent,
+        foregroundColor: Colors.transparent,
         titleTextStyle: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.w700,
@@ -138,7 +139,7 @@ extension ThemeExt on ThemeData {
 
   Color get tabBarIndicatorColor => _isLight
       ? Colors.grey.withValues(alpha: 0.2)
-      : Colors.grey.withValues(alpha: 0.2);
+      : Colors.grey.withValues(alpha: 0.3);
 
   /// Other colors
 
@@ -146,7 +147,11 @@ extension ThemeExt on ThemeData {
 
   Color get glassBorderColor => _isLight
       ? Colors.grey.withValues(alpha: 0.05)
-      : Colors.grey.withValues(alpha: 0.2);
+      : Colors.grey.withValues(alpha: 0.65);
+
+  Color get glassBackgroundColor => _isLight
+      ? Colors.grey
+      : Colors.grey[800]!;
 
 }
 

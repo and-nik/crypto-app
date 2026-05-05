@@ -19,13 +19,26 @@ class CoinsPage extends StatelessWidget {
       create: (context) => CoinsCubit(getIt())..load(),
       child: BlocBuilder<CoinsCubit, CoinsState>(
         builder: (context, state) {
-
+          final topOffset = MediaQuery.of(context).padding.top + kToolbarHeight;
           final cubit = context.read<CoinsCubit>();
-
           return Scaffold(
+            extendBodyBehindAppBar: true,
             appBar: AppBar(
               title: Text(
                 context.l10n.coins_title(state.coins.length),
+              ),
+              flexibleSpace: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.black,
+                      Colors.black54,
+                      Colors.transparent,
+                    ],
+                  ),
+                ),
               ),
             ),
             body: state.isLoading ? const Center(
@@ -35,6 +48,7 @@ class CoinsPage extends StatelessWidget {
               wrapWithScaffold: false,
               onTryAgain: () => cubit.load(),
             ) : RefreshIndicator(
+              edgeOffset: topOffset,
               onRefresh: () => cubit.load(),
               child: state.coins.isEmpty ? Center(
                 child: Text(context.l10n.coins_empty),
@@ -43,7 +57,7 @@ class CoinsPage extends StatelessWidget {
                   parent: BouncingScrollPhysics(),
                 ),
                 itemCount: state.coins.length,
-                padding: const .only(bottom: 40),
+                padding: .only(top: topOffset, bottom: 40),
                 itemBuilder: (context, index) {
                   return CoinCell(
                     index: index,

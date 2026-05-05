@@ -40,7 +40,7 @@ class Glass extends StatelessWidget {
         ),
       ),
       child: Material(
-        color: context.theme.white.withValues(alpha: alpha.alpha),
+        color: context.theme.glassBackgroundColor.withValues(alpha: alpha.alpha),
         borderRadius: .circular(border),
         clipBehavior: .hardEdge,
         elevation: elevation,
