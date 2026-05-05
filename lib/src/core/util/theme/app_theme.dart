@@ -138,7 +138,7 @@ extension ThemeExt on ThemeData {
   Color get alwaysWhite => Colors.white;
 
   Color get tabBarIndicatorColor => _isLight
-      ? Colors.grey.withValues(alpha: 0.2)
+      ? Colors.grey.withValues(alpha: 0.1)
       : Colors.grey.withValues(alpha: 0.3);
 
   /// Other colors
@@ -150,7 +150,7 @@ extension ThemeExt on ThemeData {
       : Colors.grey.withValues(alpha: 0.65);
 
   Color get glassBackgroundColor => _isLight
-      ? Colors.grey
+      ? Colors.white
       : Colors.grey[800]!;
 
 }

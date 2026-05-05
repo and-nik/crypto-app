@@ -18,9 +18,10 @@ class PortfolioPage extends StatelessWidget {
         title: Text(context.l10n.portfolio),
         actions: [
           SizedBox(
-            width: 56,
-            height: 56,
+            width: 46,
+            height: 46,
             child: Glass(
+              elevation: 2,
               child: CustomButton(
                 onPressed: () {
 
@@ -35,6 +36,7 @@ class PortfolioPage extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(width: 16,),
         ],
       ),
     );

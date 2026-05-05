@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:crypto_app/src/core/presentation/custom/app_bar_gradient_background.dart';
 import 'package:crypto_app/src/core/presentation/custom/localized_error_widget.dart';
 import 'package:crypto_app/src/core/presentation/custom/paginated_list_view.dart';
 import 'package:crypto_app/src/core/util/di/setup_di.dart';
@@ -27,19 +28,7 @@ class CoinsPage extends StatelessWidget {
               title: Text(
                 context.l10n.coins_title(state.coins.length),
               ),
-              flexibleSpace: Container(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Colors.black,
-                      Colors.black54,
-                      Colors.transparent,
-                    ],
-                  ),
-                ),
-              ),
+              flexibleSpace: const AppBarGradientBackground(),
             ),
             body: state.isLoading ? const Center(
               child: CupertinoActivityIndicator(),
