@@ -1,8 +1,9 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:crypto_app/l10n/gen/app_localizations.dart';
 import 'package:crypto_app/src/core/util/router/app_router.dart';
 import 'package:crypto_app/src/feature/app/presentation/cubit/app_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class AppPage extends StatelessWidget {
 
@@ -30,13 +31,13 @@ class AppPage extends StatelessWidget {
               //   _autoRouteObserver,
               // ],
             ),
-            // localizationsDelegates: const [
-            //   S.delegate,
-            //   GlobalMaterialLocalizations.delegate,
-            //   GlobalWidgetsLocalizations.delegate,
-            //   GlobalCupertinoLocalizations.delegate,
-            // ],
-            // supportedLocales: S.delegate.supportedLocales,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: AppLocalizations.supportedLocales,
           );
         },
       ),

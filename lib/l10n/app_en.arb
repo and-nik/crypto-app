@@ -1,0 +1,8 @@
+{
+  "app_name": "Crypto App",
+  "crypto": "Crypto",
+  "portfolio": "Portfolio",
+  "coins_title": "Coins loaded: {count}",
+  "coins_empty": "Coins list is empty"
+
+}

@@ -73,7 +73,7 @@ class _PaginatedListViewState extends State<PaginatedListView> {
       itemBuilder: (context, index) {
         if (index == widget.itemCount && widget.isPaginating) {
           return const Padding(
-            padding: EdgeInsets.all(16),
+            padding: .all(16),
             child: Center(child: CupertinoActivityIndicator()),
           );
         }

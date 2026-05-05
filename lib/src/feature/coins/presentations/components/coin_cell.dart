@@ -1,9 +1,11 @@
 import 'package:crypto_app/src/core/domain/model/coin.dart';
 import 'package:crypto_app/src/core/domain/model/currency_ticker.dart';
-import 'package:crypto_app/src/core/domain/model/quote.dart';
+import 'package:crypto_app/src/core/util/extension/build_context_ext.dart';
 import 'package:crypto_app/src/core/util/extension/double_ext.dart';
+import 'package:crypto_app/src/core/util/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
+//todo
 final ccur = CurrencyTicker.usd;
 
 const _iconSize = 30.0;
@@ -50,7 +52,7 @@ class CoinCell extends StatelessWidget {
               coin.iconUrl(),
               width: _iconSize,
               height: _iconSize,
-              fit: BoxFit.contain,
+              fit: .contain,
             ),
           ),
 
@@ -85,8 +87,8 @@ class CoinCell extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   color: quote.percentChange24h > 0
-                      ? Colors.green
-                      : Colors.red,
+                      ? context.theme.successTextColor
+                      : context.theme.errorTextColor,
                 ),
               ),
             ),

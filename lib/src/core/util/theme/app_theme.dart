@@ -47,7 +47,6 @@ class AppTheme {
         statusBarBrightness: Brightness.light,
       ),
       elevation: 0,
-      // elevation: 1.5,
       surfaceTintColor: Colors.transparent,
       centerTitle: true,
       scrolledUnderElevation: 0,
@@ -69,11 +68,30 @@ class AppTheme {
     ThemeData.dark(
       useMaterial3: true,
     ).copyWith(
-    scaffoldBackgroundColor: _scaffoldTint(_primary, .dark, 0.92),
-    colorScheme: const ColorScheme.dark(
-      primary: _primary,
+      scaffoldBackgroundColor: Colors.black,
+      colorScheme: const ColorScheme.dark(
+        primary: _primary,
+      ),
+      appBarTheme: const AppBarTheme(
+        systemOverlayStyle: SystemUiOverlayStyle(
+          systemNavigationBarColor: Colors.transparent,
+          systemNavigationBarIconBrightness: Brightness.light,
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness: Brightness.dark,
+        ),
+        elevation: 0,
+        surfaceTintColor: Colors.transparent,
+        centerTitle: true,
+        scrolledUnderElevation: 0,
+        backgroundColor: Colors.transparent,
+        titleTextStyle: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          color: Colors.white,
+        ),
+      ),
     ),
-  ),
   );
 
 }
@@ -84,83 +102,7 @@ extension ThemeExt on ThemeData {
 
   Color get lightSoftPrimary => _scaffoldTint(colorScheme.primary, .light, 0.6);
 
-  /// Text colors
-
-  Color get textColor => _isLight
-      ? textTheme.bodySmall?.color ?? Colors.black
-      : textTheme.bodySmall?.color ?? Colors.white;
-
-  Color get secondaryTextColor => _isLight
-      ? Color(0xff9E9E9E)
-      : Color(0xff9E9E9E);
-
-  Color get tertiaryTextColor => _isLight
-      ? Color(0xff9E9E9E)
-      : Color(0xff9E9E9E);
-
-  Color get errorTextColor => _isLight
-      ? Color(0xFFD10D00)
-      : Color(0xFFD10D00);
-
-  Color get successTextColor => _isLight
-      ? Color(0xff0DAD1D)
-      : Color(0xff0DAD1D);
-
-  Color get waitTextColor => _isLight
-      ? Color(0xff246BFD)
-      : Color(0xff246BFD);
-
-  Color get notBlackTextColor => _isLight
-      ? Color(0xFF212121)
-      : Color(0xFF212121);
-
-  Color get appNameTextColor => _isLight
-      ? Color(0xff5E6278)
-      : Color(0xff5E6278);
-
-/// Others
-
-  Color get blackoutColor => _isLight
-      ? Colors.black38
-      : Colors.black38;
-
-  Color get waitRegCircleSoftColor => _isLight
-      ? Color(0xff6F9EFF)
-      : Color(0xff6F9EFF);
-
-  Color get waitRegCircleColor => _isLight
-      ? Color(0xff246BFD)
-      : Color(0xff246BFD);
-
-  Color get successRegCircleSoftColor => _isLight
-      ? Color(0xff0DAD1D)
-      : Color(0xff0DAD1D);
-
-  Color get successRegCircleColor => _isLight
-      ? Color(0xff1DD30D)
-      : Color(0xff1DD30D);
-
-  Color get alwaysWhite => Colors.white;
-
-  Color get highlightTabBarItemColor => _isLight
-      ? colorScheme.primary.withValues(alpha: 0.12)
-      : colorScheme.primary.withValues(alpha: 0.12);
-
-  Color get tabBarColor => _isLight
-      ? Colors.grey.shade300
-      : Colors.grey.shade300;
-
-  Color get tabBarShadowColor => Colors.black45;
-
-  Color get highlightTextFieldColor => _isLight
-      ? colorScheme.primary.withValues(alpha: 0.06)
-      : colorScheme.primary.withValues(alpha: 0.06);
-
-  Color get textFieldBorderColor => _isLight
-      ? Color(0xFFE1E0E0) ///Color(0xffDCDCDC)
-      : Color(0xFFE1E0E0);
-
-  Color get disabledButtonBackgroundColor => secondaryTextColor;
+  /// Colors
 
   Color get black => _isLight
       ? Colors.black
@@ -169,6 +111,43 @@ extension ThemeExt on ThemeData {
   Color get white => _isLight
       ? Colors.white
       : Colors.black;
+
+  /// Text colors
+
+  Color get textColor => _isLight
+      ? textTheme.bodySmall?.color ?? Colors.black
+      : textTheme.bodySmall?.color ?? Colors.white;
+
+  Color get secondaryTextColor => _isLight
+      ? const Color(0xff9E9E9E)
+      : const Color(0xff9E9E9E);
+
+  Color get tertiaryTextColor => _isLight
+      ? const Color(0xff9E9E9E)
+      : const Color(0xff9E9E9E);
+
+  Color get errorTextColor => _isLight
+      ? Colors.red[800]!
+      : Colors.red;
+
+  Color get successTextColor => _isLight
+      ? Colors.green[700]!
+      : Colors.green;
+
+  Color get alwaysWhite => Colors.white;
+
+  Color get tabBarIndicatorColor => _isLight
+      ? Colors.grey.withValues(alpha: 0.2)
+      : Colors.grey.withValues(alpha: 0.2);
+
+  /// Other colors
+
+  Color get glassShadowColor => Colors.black45;
+
+  Color get glassBorderColor => _isLight
+      ? Colors.grey.withValues(alpha: 0.05)
+      : Colors.grey.withValues(alpha: 0.2);
+
 }
 
 /// Generate color relatively to primary color, brightness (white or black color)

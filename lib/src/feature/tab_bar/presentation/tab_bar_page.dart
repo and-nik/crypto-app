@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
@@ -37,7 +36,7 @@ class _TabBarPageState extends State<TabBarPage> {
         return Scaffold(
           extendBody: true,
           body: Stack(
-            alignment: AlignmentGeometry.bottomCenter,
+            alignment: .bottomCenter,
             children: [
 
               /// Main app

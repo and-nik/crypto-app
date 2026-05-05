@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:crypto_app/src/core/presentation/custom/localized_error_widget.dart';
 import 'package:crypto_app/src/core/presentation/custom/paginated_list_view.dart';
 import 'package:crypto_app/src/core/util/di/setup_di.dart';
+import 'package:crypto_app/src/core/util/extension/build_context_ext.dart';
 import 'package:crypto_app/src/feature/coins/presentations/components/coin_cell.dart';
 import 'package:crypto_app/src/feature/coins/presentations/cubit/coins_cubit.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,9 +24,8 @@ class CoinsPage extends StatelessWidget {
 
           return Scaffold(
             appBar: AppBar(
-              //todo loc
               title: Text(
-                "Coins loaded: ${state.coins.length}",
+                context.l10n.coins_title(state.coins.length),
               ),
             ),
             body: state.isLoading ? const Center(
@@ -36,15 +36,14 @@ class CoinsPage extends StatelessWidget {
               onTryAgain: () => cubit.load(),
             ) : RefreshIndicator(
               onRefresh: () => cubit.load(),
-              child: state.coins.isEmpty ? const Center(
-                //todo loc
-                child: Text("Empty Coins List"),
+              child: state.coins.isEmpty ? Center(
+                child: Text(context.l10n.coins_empty),
               ) : PaginatedListView(
                 physics: const AlwaysScrollableScrollPhysics(
                   parent: BouncingScrollPhysics(),
                 ),
                 itemCount: state.coins.length,
-                padding: const EdgeInsets.only(bottom: 40),
+                padding: const .only(bottom: 40),
                 itemBuilder: (context, index) {
                   return CoinCell(
                     index: index,

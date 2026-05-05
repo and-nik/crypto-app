@@ -1,5 +1,4 @@
-import 'dart:ui';
-
+import 'package:crypto_app/src/core/util/extension/build_context_ext.dart';
 import 'package:crypto_app/src/core/util/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +11,8 @@ enum GlassAlpha {
 
   const GlassAlpha(this.alpha);
 }
+
+const double _blurStrength = 8.0;
 
 class Glass extends StatelessWidget {
 
@@ -28,27 +29,24 @@ class Glass extends StatelessWidget {
     required this.child,
   });
 
-  static const double _blurStrength = 8.0;
-
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(border),
-        border: Border.all(
-          color: Colors.grey.withOpacity(0.05),
+        borderRadius: .circular(border),
+        border: .all(
+          color: context.theme.glassBorderColor,
           width: 1,
         ),
       ),
       child: Material(
-        color: theme.white.withValues(alpha: alpha.alpha),
-        borderRadius: BorderRadius.circular(border),
-        clipBehavior: Clip.hardEdge,
+        color: context.theme.white.withValues(alpha: alpha.alpha),
+        borderRadius: .circular(border),
+        clipBehavior: .hardEdge,
         elevation: elevation,
-        shadowColor: theme.tabBarShadowColor,
+        shadowColor: context.theme.glassShadowColor,
         child: BackdropFilter(
-          filter: ImageFilter.blur(
+          filter: .blur(
             sigmaX: _blurStrength,
             sigmaY: _blurStrength,
           ),

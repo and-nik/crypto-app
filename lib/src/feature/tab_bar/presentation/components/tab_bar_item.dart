@@ -1,6 +1,10 @@
+import 'package:crypto_app/src/core/util/extension/build_context_ext.dart';
 import 'package:crypto_app/src/core/util/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+const double _itemWidth = 64;
+const double _iconSize = 24;
 
 class TabBarItem extends StatelessWidget {
   final String iconPath;
@@ -9,9 +13,6 @@ class TabBarItem extends StatelessWidget {
   final int currentIndex;
   final ValueChanged<int> onTap;
   final bool withCount;
-
-  static const double _itemWidth = 64;
-  static const double _iconSize = 24;
 
   const TabBarItem({
     super.key,
@@ -27,7 +28,6 @@ class TabBarItem extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final isActive = index == currentIndex;
-    final theme = Theme.of(context);
 
     return InkWell(
       focusColor: Colors.transparent,
@@ -50,8 +50,8 @@ class TabBarItem extends StatelessWidget {
                   fit: .scaleDown,
                   colorFilter: .mode(
                     isActive
-                        ? theme.colorScheme.primary
-                        : theme.textColor,
+                        ? context.theme.colorScheme.primary
+                        : context.theme.textColor,
                     .srcIn,
                   ),
                 ),
@@ -89,11 +89,11 @@ class TabBarItem extends StatelessWidget {
             Text(
               label,
               style: TextStyle(
-                fontSize: 11,
+                fontSize: 12,
                 fontWeight: .w500,
                 color: isActive
-                    ? theme.colorScheme.primary
-                    : theme.textColor,
+                    ? context.theme.colorScheme.primary
+                    : context.theme.textColor,
               ),
             ),
           ],
