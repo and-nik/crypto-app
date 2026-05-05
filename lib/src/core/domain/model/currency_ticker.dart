@@ -1,7 +1,8 @@
-abstract class CurrencyTicker {
-  CurrencyTicker._();
-
-  static const String usd = "USD";
-  static const String eur = "EUR";
-  static const String rub = "RUB";
+enum CurrencyTicker {
+  usd,
+  eur,
+  rub;
+  static const String usdStr = "USD";
+  static const String eurStr = "EUR";
+  static const String rubStr = "RUB";
 }

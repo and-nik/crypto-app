@@ -11,10 +11,10 @@ abstract class CoinService {
   factory CoinService(Dio dio) = _CoinService;
 
   @GET(ApiConst.endpointCoins)
-  Future<CoinsResponse> list({
+  Future<CoinsResponseDto> list({
     @Query(ApiConst.queryStart) required int start,
     @Query(ApiConst.queryLimit) required int limit,
-    @Query(ApiConst.queryConvert) String convert = CurrencyTicker.usd,
+    @Query(ApiConst.queryConvert) String convert = CurrencyTicker.usdStr,
   });
 
 }

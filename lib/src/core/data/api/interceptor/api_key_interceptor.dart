@@ -1,11 +1,9 @@
-import 'dart:io';
-
 import 'package:crypto_app/src/core/data/api/const/api_const.dart';
 import 'package:dio/dio.dart';
 
 class ApiKeyInterceptor extends Interceptor {
 
-  ApiKeyInterceptor();
+  const ApiKeyInterceptor();
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {

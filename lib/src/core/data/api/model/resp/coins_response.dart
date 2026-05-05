@@ -3,19 +3,19 @@ import 'package:json_annotation/json_annotation.dart';
 part 'coins_response.g.dart';
 
 @JsonSerializable()
-class CoinsResponse {
+class CoinsResponseDto {
   final StatusDto status;
   final List<CoinDto> data;
 
-  CoinsResponse({
+  CoinsResponseDto({
     required this.status,
     required this.data,
   });
 
-  factory CoinsResponse.fromJson(Map<String, dynamic> json) =>
-      _$CoinsResponseFromJson(json);
+  factory CoinsResponseDto.fromJson(Map<String, dynamic> json) =>
+      _$CoinsResponseDtoFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CoinsResponseToJson(this);
+  Map<String, dynamic> toJson() => _$CoinsResponseDtoToJson(this);
 }
 
 @JsonSerializable()
