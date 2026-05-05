@@ -23,7 +23,10 @@ class CoinsPage extends StatelessWidget {
 
           return Scaffold(
             appBar: AppBar(
-              title: Text(state.coins.length.toString()),
+              //todo loc
+              title: Text(
+                "Coins loaded: ${state.coins.length}",
+              ),
             ),
             body: state.isLoading ? const Center(
               child: CupertinoActivityIndicator(),
@@ -34,6 +37,7 @@ class CoinsPage extends StatelessWidget {
             ) : RefreshIndicator(
               onRefresh: () => cubit.load(),
               child: state.coins.isEmpty ? const Center(
+                //todo loc
                 child: Text("Empty Coins List"),
               ) : PaginatedListView(
                 physics: const AlwaysScrollableScrollPhysics(
@@ -42,7 +46,10 @@ class CoinsPage extends StatelessWidget {
                 itemCount: state.coins.length,
                 padding: const EdgeInsets.only(bottom: 40),
                 itemBuilder: (context, index) {
-                  return CoinCell(coin: state.coins[index]);
+                  return CoinCell(
+                    index: index,
+                    coin: state.coins[index],
+                  );
                 },
                 onPaginate: () => cubit.paginate(),
                 isPaginating: state.isPaginating,
