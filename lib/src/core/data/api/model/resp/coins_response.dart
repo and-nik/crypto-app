@@ -21,10 +21,10 @@ class CoinsResponseDto {
 @JsonSerializable()
 class StatusDto {
   final String timestamp;
-  final int errorCode;
+  final int? errorCode;
   final String? errorMessage;
   final int elapsed;
-  final int creditCount;
+  final int? creditCount;
 
   StatusDto({
     required this.timestamp,
@@ -67,7 +67,7 @@ class CoinDto {
   ///   "USD": QuoteDto(...),
   ///   "EUR": QuoteDto(...),
   /// }
-  final Map<String, QuoteDto> quote;
+  final List<Map<String, QuoteDto>> quote;
 
   const CoinDto({
     required this.id,
@@ -81,7 +81,7 @@ class CoinDto {
     required this.quote,
   });
 
-  QuoteDto? quoteFor(String currency) => quote[currency.toUpperCase()];
+  // QuoteDto? quoteFor(String currency) => quote[currency.toUpperCase()];
 
   factory CoinDto.fromJson(Map<String, dynamic> json) =>
       _$CoinDtoFromJson(json);

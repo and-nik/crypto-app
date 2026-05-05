@@ -15,7 +15,7 @@ class CoinsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CoinsCubit(getIt()),
+      create: (context) => CoinsCubit(getIt())..load(),
       child: BlocBuilder<CoinsCubit, CoinsState>(
         builder: (context, state) {
 

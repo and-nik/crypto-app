@@ -11,6 +11,7 @@ abstract class CoinService {
   factory CoinService(Dio dio) = _CoinService;
 
   @GET(ApiConst.endpointCoins)
+  @Headers(ApiConst.headerMapCoinmarketcapApiKeyRequired)
   Future<CoinsResponseDto> list({
     @Query(ApiConst.queryStart) required int start,
     @Query(ApiConst.queryLimit) required int limit,

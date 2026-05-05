@@ -22,7 +22,7 @@ class AppPage extends StatelessWidget {
             /// MaterialApp рисует весь контент приложения через свой child.
             /// А builder позволяет обернуть этот child во что-то свое.
             builder: (context, child) {
-              return const SizedBox();
+              return child ?? const SizedBox.shrink();
               // Overlay
             },
             routerConfig: _appRouter.config(

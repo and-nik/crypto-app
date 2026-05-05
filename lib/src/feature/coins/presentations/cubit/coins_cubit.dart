@@ -20,7 +20,6 @@ class CoinsCubit extends Cubit<CoinsState> {
         return response.copyWith(coins: items);
       },
     );
-    load();
   }
 
   Future<void> load() async {

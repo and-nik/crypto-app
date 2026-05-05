@@ -14,8 +14,14 @@ class EntryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => EntryCubit(),
-      child: BlocListener(
+      create: (context) {
+        final cubit = EntryCubit();
+        Future.microtask(() {
+          cubit.load();
+        });
+        return cubit;
+      },
+      child: BlocListener<EntryCubit, _EntryState>(
         listener: (context, state) {
           if (state is _NotFirstTimeState) {
             context.router.replaceAll([const CoinsRoute()]);
@@ -25,7 +31,7 @@ class EntryPage extends StatelessWidget {
           }
         },
         child: const Scaffold(
-          body: CupertinoActivityIndicator(),
+          body: CupertinoActivityIndicator(color: Colors.red,),
         ),
       ),
     );

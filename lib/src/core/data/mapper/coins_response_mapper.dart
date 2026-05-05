@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:crypto_app/src/core/data/api/model/resp/coins_response.dart';
 import 'package:crypto_app/src/core/domain/model/coin.dart';
 import 'package:crypto_app/src/core/domain/model/currency_ticker.dart';
@@ -43,7 +45,7 @@ class _CoinMapper {
       circulatingSupply: dto.circulatingSupply,
       maxSupply: dto.maxSupply,
       lastUpdated: DateTime.parse(dto.lastUpdated).toUtc(),
-      quotes: _QuoteMapper.toModel(dto.quote),
+      quotes: dto.quote.map(_QuoteMapper.toModel).expand<Quote>((element) => element,).toList(),
     );
   }
 }

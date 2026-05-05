@@ -2,9 +2,7 @@ part of '../entry_page.dart';
 
 class EntryCubit extends Cubit<_EntryState> {
 
-  EntryCubit(): super(_LoadingState()) {
-    load();
-  }
+  EntryCubit(): super(_LoadingState());
 
   Future<void> load() async {
     if (false) {

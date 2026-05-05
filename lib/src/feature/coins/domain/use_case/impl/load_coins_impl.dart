@@ -5,7 +5,7 @@ import 'package:crypto_app/src/feature/coins/domain/use_case/load_coins.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: LoadCoins)
-class LoadCoinsImpl extends LoadCoins {
+class LoadCoinsImpl implements LoadCoins {
   final CoinRepo _coinRepo;
 
   LoadCoinsImpl(this._coinRepo);
